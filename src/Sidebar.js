@@ -35,6 +35,11 @@ function Sidebar() {
 
             <div className="sidebar__botom">
                 <p>Recent </p>
+                {recentItem('frontend')}
+                {recentItem('programming')}
+                {recentItem('software')}
+                {recentItem('design')}
+                {recentItem('developer')}
             </div>
         </div>
     );
