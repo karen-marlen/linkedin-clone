@@ -7,6 +7,8 @@ import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
 import EventNoteIcon from '@material-ui/icons/EventNote';
 import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay';
 
+import Post from './Post';
+
 function Feed() {
     return (
         <div className='feed'>
@@ -44,7 +46,11 @@ function Feed() {
                 </div>
             </div>
 
-            
+            <Post 
+                name='Karen Marlen'
+                description='frontend developer'
+                message='This worked'
+            />
             
         </div>
     );
