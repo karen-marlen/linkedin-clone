@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './App.css';
 
@@ -12,7 +12,18 @@ import Sidebar from './Sidebar';
 
 function App() {
 
-  const user = useSelector(selectUser)
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    auth.onAuthStateChanged((userAuth) => {
+      if (userAuth) {
+
+      } else {
+
+      }
+    });
+  }, []);
 
   return (
     <div className='app'>
