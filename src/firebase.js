@@ -7,4 +7,10 @@ const firebaseConfig = {
     storageBucket: "linkedin-clone-react-b0660.appspot.com",
     messagingSenderId: "963370415278",
     appId: "1:963370415278:web:f0879bddccfcbd0645a93f"
-  };
+};
+
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+const db = firebaseApp.firestore();
+const auth = firebase.auth();
+
+export { db, auth };
