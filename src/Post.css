@@ -24,6 +24,11 @@
     font-size: 15px;
 }
 
+.post__button {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .post__body {
     overflow-wrap: anywhere;
 }
