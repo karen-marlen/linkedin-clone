@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import { auth } from 'firebase';
 import './Login.css';
+import { SettingsSystemDaydream } from '@material-ui/icons';
 
 function Login() {
 
-    const loginToApp = () => {};
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [profilePic, setProfilePic] = useState('');
 
-    const register = () => {};
+    const loginToApp = (e) => {
+        e.preventDefault();
+    };
+
+    const register = () => {
+        if(!name ) {
+            return alert('Please enter a full name');
+        }
+
+        auth.createUserWithEmailAndPassword(email, password)
+    };
 
     return (
         <div className='login'>
@@ -15,18 +31,38 @@ function Login() {
             />
 
             <form>
-                <input placeholder='Full name (required if registering)' type='text' />
+                <input 
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder='Full name (required if registering)' 
+                    type='text' 
+                />
 
-                <input placeholder='Profile pic URL (optional)' type="text"/>
+                <input 
+                    value={profilePic}
+                    onChange={(e) => setProfilePic(e.target.value)}
+                    placeholder='Profile pic URL (optional)' 
+                    type="text"
+                />
 
-                <input placeholder='Email' type="email"/>
+                <input 
+                    value={email} 
+                    onChange={(e) =>setEmail(e.target.value)}
+                    placeholder='Email' 
+                    type="email"
+                />
 
-                <input placeholder='Password' type="password"/>
+                <input 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder='Password'
+                    type="password"
+                />
 
                 <button type='submit' onClick={loginToApp} >Sign In</button>
             </form>
 
-            <p>Not a nember?
+            <p>Not a nember?{'  '}
                 <span className='login__register' onClick={register} >Register Now</span>
             </p>
         </div>
