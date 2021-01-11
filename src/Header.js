@@ -20,7 +20,7 @@ function Header() {
 
                 <div className='header__search'>
                     <SearchIcon />
-                    <input type='text' />
+                    <input placeholder='Search' type='text' />
                 </div>
             </div>
 
@@ -33,7 +33,7 @@ function Header() {
                 <HeaderOption avatar="https://avatars0.githubusercontent.com/u/72042911?s=460&u=20fcad444baa173be213f92f9fb575abec343fa2&v=4" title='Karen' />
             </div>
         </div>
-    )
+    );
 }
 
-export default Header
+export default Header;
