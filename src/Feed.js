@@ -19,13 +19,15 @@ function Feed() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        db.collection('posts').onSnapshot((snapshot) =>
-        setPosts(
-            snapshot.docs.map((doc) => ({
-                id: doc.id,
-                data: doc.data(),
-            }))
-        ))
+        db.collection('posts')
+        .orderBy('timestamp', 'desc')
+        .onSnapshot((snapshot) =>
+            setPosts(
+                snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    data: doc.data(),
+                }))
+            ))
     }, []);
 
     const sendPost = e => {
@@ -37,7 +39,9 @@ function Feed() {
             message: input,
             photoUrl: '',
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        })
+        });
+
+        setInput('');
     };
 
     return (
@@ -76,8 +80,14 @@ function Feed() {
                 </div>
             </div>
 
-            {posts.map((post) => (
-                <Post  />
+            {posts.map(({ id, data: { name, description, message, photoUrl }}) => (
+                <Post 
+                    key={id}
+                    name={name}
+                    description={description}
+                    message={message}
+                    photoUrl={photoUrl}
+                />
             ))}
 
             <Post 
