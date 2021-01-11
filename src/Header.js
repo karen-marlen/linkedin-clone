@@ -10,8 +10,20 @@ import ChatIcon from '@material-ui/icons/Chat';
 
 import HeaderOption from './HeaderOption';
 
+import { useDispatch } from 'react-redux';
+import { auth } from './firebase';
+import { logout } from './features/counter/userSlice';
+
 
 function Header() {
+
+    const dispatch = useDispatch();
+
+    const logoutOfApp = () => {
+        dispatch(logout())
+        auth.signOut();
+    };
+
     return (
         <div className='header'>
             <div className='header__left'>
@@ -30,7 +42,11 @@ function Header() {
                 <HeaderOption Icon={BusinessCenterIcon} title='Jobs' />
                 <HeaderOption Icon={NotificationsIcon} title='Notifications' />
                 <HeaderOption Icon={ChatIcon} title='Message' />
-                <HeaderOption avatar="https://avatars0.githubusercontent.com/u/72042911?s=460&u=20fcad444baa173be213f92f9fb575abec343fa2&v=4" title='Karen' />
+                <HeaderOption 
+                    avatar="https://avatars0.githubusercontent.com/u/72042911?s=460&u=20fcad444baa173be213f92f9fb575abec343fa2&v=4"
+                    title='Karen' 
+                    onclick={logoutOfApp}
+                />
             </div>
         </div>
     );

@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import './App.css';
 
-import { selectUser } from './features/counter/userSlice';
+import { login, logout, selectUser } from './features/counter/userSlice';
+import { auth } from './firebase';
 
 import Login from './Login';
 import Feed from './Feed';
@@ -18,9 +19,16 @@ function App() {
   useEffect(() => {
     auth.onAuthStateChanged((userAuth) => {
       if (userAuth) {
-
+          dispatch(
+            login({
+              email: userAuth.email,
+              uid: userAuth.uid,
+              displayName: userAuth.displayName,
+              photoUrl: userAuth.photoURL,
+            })
+          );
       } else {
-
+          dispatch(logout());
       }
     });
   }, []);

@@ -12,8 +12,6 @@ import Post from './Post';
 import { db } from './firebase';
 import firebase from 'firebase';
 
-import Post from './Post';
-
 function Feed() {
     const [input, setInput] = useState('');
     const [posts, setPosts] = useState([]);
