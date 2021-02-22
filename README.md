@@ -1,1 +1,1 @@
-#### React, Redux, Firebase
+#### Project with React, Redux, Firebase
